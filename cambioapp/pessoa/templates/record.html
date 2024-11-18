@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="card">
+  <div class="card-header"><strong>
+    	{{ person_record.name }} 
+  </div>
+  <div class="card-body"> 
+
+    <p class="card-text">
+    <strong>Nome: </strong>{{ person_record.name }}</p>
+
+    <p class="card-text">
+    <strong>Data de Nascimento: </strong>{{ person_record.birthdate }}
+    </p>
+
+    <p class="card-text">
+    <strong>Quantia: </strong>{{ person_record.quantity }}</p>
+    
+  </div>
+</div>  
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+
+<a href="{% url 'update_record' person_record.id %}" class="btn btn-secondary">Update Record</a>
+		
+<!-- Modal HTML -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmação de Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza de que deseja excluir este registro?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <!-- Botão para confirmar exclusão -->
+        <a href="{% url 'delete_record' person_record.id %}" class="btn btn-danger">Excluir</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
