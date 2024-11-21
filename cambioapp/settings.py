@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-3zerhme=eynk_tmn(xs!gy#a@m3==y!8efw9aug7&$5m3vxrfk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['desafio-realcloud.onrender.com']
 
 
 # Application definition
