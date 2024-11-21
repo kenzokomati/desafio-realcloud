@@ -16,7 +16,7 @@
         {% if user.is_authenticated %}
 
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'add_record' %}" style="color: white;">Add Record</a>
+          <a class="nav-link" href="{% url 'add_record' %}" style="color: white;">Adicione Registro</a>
         </li>        
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}" style="color: white;">Logout</a>
@@ -24,7 +24,7 @@
 
         {% else %}
 
-        <a href="{% provider_login_url 'google' %}" class="nav-link" style="color: white;">Login with Google</a>
+        <a href="{% provider_login_url 'google' %}" class="nav-link" style="color: white;">Login com Google</a>
 
         {% endif %}
         
