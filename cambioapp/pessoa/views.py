@@ -6,6 +6,9 @@ from .models import Pessoa
 from .functions import totalsum_pessoa, average_pessoa, obter_valor_dolar
 from decimal import Decimal 
 
+def landingpage(request):
+    return render(request, 'landingpage.html')
+
 def home(request):
     people = Pessoa.objects.all()
     total = None
@@ -22,14 +25,14 @@ def home(request):
             try:
                 person_id = request.POST.get('inputText')
                 if person_id:
-                    person = Pessoa.objects.get(id=int(person_id))
+                    person = Pessoa.objects.get(id=int(person_id)) 
                     person_quantity = Decimal(person.quantity) 
-                    exchange_rate = Decimal(obter_valor_dolar())
-                    exchange_BRL = round(person_quantity / exchange_rate, 2)
+                    exchange_rate = Decimal(obter_valor_dolar()) 
+                    exchange_BRL = round(person_quantity / exchange_rate, 2) 
                 else:
                     messages.error(request, "Por favor, insira um ID válido.")
             except Pessoa.DoesNotExist:
-                messages.error(request, "Pessoa não encontrada com o ID fornecido.")
+                messages.error(request, "Pessoa não encontrada com o ID fornecido.") 
             except Exception as e:
                 messages.error(request, f"Erro ao obter a taxa de câmbio: {str(e)}")
 
@@ -41,7 +44,10 @@ def home(request):
         'exchange_rate': exchange_rate
     })
 
-
+def logout_user(request):
+    logout(request)
+    messages.success(request, 'You Have Been Logged Out...')
+    return redirect('home')
 
 
 def get_record(request, pk):

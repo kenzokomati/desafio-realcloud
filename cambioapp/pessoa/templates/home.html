@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
+{% load socialaccount %}
+
 {% block content %}
+
+{% if user.is_authenticated %}
 
 <div class="container my-5">
     <h1 class="text-center mb-4">Lista de Pessoas</h1>
@@ -57,7 +61,14 @@
             <p><strong>Valor em Real(BRL):</strong> {{ exchange_BRL }}</p>
         </div>
     {% endif %}
-
+    
 </div>
+
+{% else %}
+
+<h1>Faça login para usar essa ferramenta</h1>
+<a href="{% provider_login_url 'google' %}">Login com Google</a>
+
+{% endif %}
 
 {% endblock %}

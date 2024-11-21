@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load allauth %}
+{% load static %}
+{% load socialaccount %}
+
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+
+{% block content %}
+    <div style="max-width: 400px; height: 50vh; margin: 50px auto; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h2>{% trans "Sign In" %}</h2>
+        </div>
+        <div style="text-align: center;">
+            <p>{% trans "Please sign in to continue" %}</p>
+            
+          
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" style="background-color: #db4437; color: white; display: flex; align-items: center; justify-content: center; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-size: 1rem; margin-top: 20px; width: 100%; max-width: 300px; margin: 0 auto; text-align: center;">
+                    {% trans "Continue" %}
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

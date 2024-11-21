@@ -1,14 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+{% load static %}
+{% load socialaccount %}
+
+<nav class="navbar navbar-expand-lg" style="background-color: orange;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}">CambioApp</a>
+    <a class="navbar-brand" href="{% url 'home' %}" style="color: white;">
+      <!-- Insert the image -->
+      <img src="{% static 'images/realcloud.png' %}" alt="RealCloud" style="height: 40px;">
+      CambioApp
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'add_record' %}">Add Record</a>
+          <a class="nav-link" href="{% url 'add_record' %}" style="color: white;">Add Record</a>
         </li>        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}" style="color: white;">Logout</a>
+        </li>
+
+        {% else %}
+
+        <a href="{% provider_login_url 'google' %}" class="nav-link" style="color: white;">Login with Google</a>
+
+        {% endif %}
         
       </ul>
       
