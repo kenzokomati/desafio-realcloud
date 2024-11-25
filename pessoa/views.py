@@ -28,7 +28,7 @@ def home(request):
                     person = Pessoa.objects.get(id=int(person_id)) 
                     person_quantity = Decimal(person.quantity) 
                     exchange_rate = Decimal(obter_valor_dolar()) 
-                    exchange_BRL = round(person_quantity / exchange_rate, 2) 
+                    exchange_BRL = round(person_quantity * exchange_rate, 2) 
                 else:
                     messages.error(request, "Por favor, insira um ID válido.")
             except Pessoa.DoesNotExist:

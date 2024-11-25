@@ -7,7 +7,8 @@ from django.urls import reverse
 ALLOWED_EMAILS = [
     "joanne.carneiro@realcloud.com.br",
     "pedro.alpis@realcloud.com.br",
-    "ekkomati@hotmail.com",
+    "kenzo.komati@gmail.com",
+    "ekkomati0@gmail.com",
 ]
 
 class EmailAccessMiddleware:
