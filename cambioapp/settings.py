@@ -159,5 +159,9 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/home'
-LOGOUT_REDIRECT_URL = '/'
+# Configure Social Account Adapter
+SOCIALACCOUNT_ADAPTER = 'pessoa.adapters.CustomSocialAccountAdapter'
+
+# Login and Redirect URLs
+LOGIN_REDIRECT_URL = '/home'  # Redirect to home after login
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'  # Redirect to landing page after logout

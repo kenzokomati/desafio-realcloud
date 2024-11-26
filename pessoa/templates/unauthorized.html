@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 50px;">
+    <h1 style="color: red;">Unauthorized Access</h1>
+    <p>Your email is not authorized to access this application.</p>
+    <a href="{% url 'landingpage' %}" class="btn btn-primary">Go Back to Landing Page</a>
+</div>
+{% endblock %}

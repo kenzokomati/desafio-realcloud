@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm
+from .forms import AddRecordForm
 from .models import Pessoa
 from .functions import totalsum_pessoa, average_pessoa, obter_valor_dolar
 from decimal import Decimal 
+import matplotlib.pyplot as plt
+import io
+import base64
+import json
+from django.http import JsonResponse
+from decimal import Decimal
 
 def landingpage(request):
     return render(request, 'landingpage.html')
@@ -44,10 +50,28 @@ def home(request):
         'exchange_rate': exchange_rate
     })
 
+from django.shortcuts import render
+from .functions import generate_graph_data
+import json
+
+def graph(request):
+    # Call the function to get graph data and image in base64
+    data, graph_data = generate_graph_data()
+
+    # Render the graph template with the data and graph image
+    return render(request, 'graph.html', {'data': json.dumps(data), 'graph_data': graph_data})
+
+def unauthorized(request):
+    """
+    View to handle unauthorized access attempts.
+    """
+    return render(request, 'unauthorized.html')
+
+
 def logout_user(request):
     logout(request)
     messages.success(request, 'You Have Been Logged Out...')
-    return redirect('home')
+    return redirect('landingpage')
 
 
 def get_record(request, pk):

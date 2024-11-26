@@ -4,7 +4,6 @@
 <nav class="navbar navbar-expand-lg" style="background-color: orange;">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}" style="color: white;">
-      <!-- Insert the image -->
       <img src="{% static 'images/realcloud.png' %}" alt="RealCloud" style="height: 40px;">
       CambioApp
     </a>
@@ -18,6 +17,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'add_record' %}" style="color: white;">Adicione Registro</a>
         </li>        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'graph' %}" style="color: white;">Graph</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}" style="color: white;">Logout</a>
         </li>

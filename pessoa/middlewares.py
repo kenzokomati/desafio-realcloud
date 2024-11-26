@@ -8,7 +8,6 @@ ALLOWED_EMAILS = [
     "joanne.carneiro@realcloud.com.br",
     "pedro.alpis@realcloud.com.br",
     "kenzo.komati@gmail.com",
-    "ekkomati0@gmail.com",
 ]
 
 class EmailAccessMiddleware:
@@ -24,8 +23,7 @@ class EmailAccessMiddleware:
             if request.user.email not in ALLOWED_EMAILS:
                 logout(request)
                 messages.error(request, "You are not authorized to access this application. You have been logged out.")
-                
-                return redirect('accounts/google/login/')  
+                return redirect('landingpage')  # Redirect unauthorized users to the landing page
         
         response = self.get_response(request)
         return response
